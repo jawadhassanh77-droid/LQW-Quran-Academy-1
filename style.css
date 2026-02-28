@@ -637,7 +637,8 @@ a {
     font-weight: 600;
     color: var(--text-dark);
 }
-
+a[href^="mailto:"] { color: #28a745 !important; text-decoration: underline !important; font-weight: bold; }
+a[href^="mailto:"]:hover { color: #218838 !important; }
 /* ===================================
    CONTACT FORM
    =================================== */
