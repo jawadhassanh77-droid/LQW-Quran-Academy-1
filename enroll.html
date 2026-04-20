@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enroll Now | Free Trial – Tajweed Quran Academy</title>
+    <meta name="description" content="Enroll at Tajweed Quran Academy. Fill in your details to start a free 3-day trial. Certified Quran teachers for kids and adults worldwide.">
+    <link rel="canonical" href="https://tajweedquranacademy.com/enroll.html">
+    <link rel="icon" type="image/png" href="./images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ==============================
+           ENROLL PAGE SPECIFIC STYLES
+           ============================== */
+        .enroll-hero {
+            background: linear-gradient(135deg, #1a3a52 0%, #2d6e3f 100%);
+            padding: 60px 20px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .enroll-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(45deg, transparent, transparent 34px, rgba(255,255,255,0.03) 34px, rgba(255,255,255,0.03) 35px),
+                repeating-linear-gradient(-45deg, transparent, transparent 34px, rgba(255,255,255,0.03) 34px, rgba(255,255,255,0.03) 35px);
+        }
+
+        .enroll-hero-inner { position: relative; z-index: 1; }
+
+        .enroll-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .enroll-hero p {
+            color: rgba(255,255,255,0.85);
+            font-size: 17px;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+
+        .trust-badge {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 30px;
+            padding: 8px 20px;
+            font-size: 13px;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* ---- FORM PAGE LAYOUT ---- */
+        .enroll-body {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 60px 20px 80px;
+        }
+
+        .enroll-section-label {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #b8860b;
+            margin-bottom: 6px;
+        }
+
+        .enroll-section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            color: #1a3a52;
+            margin-bottom: 6px;
+        }
+
+        .enroll-section-desc {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+        .enroll-divider {
+            border: none;
+            border-top: 1px solid #e8e2d8;
+            margin: 40px 0;
+        }
+
+        /* ---- FORM CARD ---- */
+        .enroll-form-card {
+            background: white;
+            border-radius: 18px;
+            padding: 40px;
+            box-shadow: 0 6px 28px rgba(0,0,0,0.07);
+            border: 1.5px solid rgba(184,134,11,0.15);
+        }
+
+        .ef-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .ef-grid-1 {
+            margin-bottom: 18px;
+        }
+
+        .ef-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .ef-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        .ef-group input,
+        .ef-group select,
+        .ef-group textarea {
+            padding: 13px 16px;
+            border: 1.5px solid #e0d9cc;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            background: #fdfaf5;
+            transition: border-color 0.25s, background 0.2s;
+        }
+
+        .ef-group input:focus,
+        .ef-group select:focus,
+        .ef-group textarea:focus {
+            outline: none;
+            border-color: #D4AF37;
+            background: white;
+        }
+
+        .ef-group textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        /* Radio/Checkbox group */
+        .ef-radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .ef-radio-label {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            background: #faf7f0;
+            border: 1.5px solid #e0d9cc;
+            border-radius: 8px;
+            padding: 9px 16px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .ef-radio-label:has(input:checked) {
+            border-color: #D4AF37;
+            background: #fdf6e3;
+            color: #b8860b;
+            font-weight: 600;
+        }
+
+        .ef-radio-label input[type="radio"],
+        .ef-radio-label input[type="checkbox"] {
+            padding: 0;
+            border: none;
+            width: 14px;
+            height: 14px;
+            background: none;
+        }
+
+        .enroll-submit-btn {
+            display: block;
+            width: 100%;
+            background: #FFB404;
+            color: #1a1a1a;
+            font-weight: 800;
+            font-size: 17px;
+            padding: 16px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 28px;
+            transition: all 0.3s;
+        }
+
+        .enroll-submit-btn:hover {
+            background: #e6a100;
+            box-shadow: 0 8px 24px rgba(255,180,4,0.4);
+            transform: translateY(-2px);
+        }
+
+        .ef-note {
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            margin-top: 12px;
+        }
+
+        .ef-note a { color: #b8860b; }
+
+        /* ---- INFO PANEL ---- */
+        .enroll-info-panel {
+            background: #1a1a1a;
+            color: rgba(255,255,255,0.85);
+            border-radius: 18px;
+            padding: 36px 32px;
+            margin-top: 40px;
+        }
+
+        .enroll-info-panel h3 {
+            color: #D4AF37;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .info-row {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.75);
+        }
+
+        .info-row strong {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .info-internal-links {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .info-internal-links a {
+            color: #D4AF37;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        /* ---- POLICIES SECTION ---- */
+        .policies-section {
+            background: #f5f0e8;
+            border-radius: 14px;
+            padding: 30px;
+            margin-top: 36px;
+        }
+
+        .policies-section h3 {
+            font-family: 'Playfair Display', serif;
+            color: #1a3a52;
+            margin-bottom: 18px;
+        }
+
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+
+        .policy-card {
+            background: white;
+            border: 1px solid rgba(184,134,11,0.2);
+            border-radius: 10px;
+            padding: 16px 18px;
+        }
+
+        .policy-card h4 {
+            font-size: 14px;
+            color: #1a3a52;
+            margin-bottom: 6px;
+        }
+
+        .policy-card p {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .enroll-hero h1 { font-size: 28px; }
+            .ef-grid-2 { grid-template-columns: 1fr; }
+            .enroll-form-card { padding: 24px 16px; }
+            .enroll-body { padding: 40px 14px 60px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="./images/logo.png" alt="Tajweed Quran Academy Logo" class="logo-img-header">
+            </div>
+            <nav id="nav-menu" class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="index.html#courses">Courses</a>
+                <a href="fees.html" class="nav-fees">Fees</a>
+                <a href="online-quran-academy-blog.html">Blog</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <a href="enroll.html" class="btn btn-quickjoin" style="background:#1a3a52;color:white;">Enroll</a>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="enroll-hero">
+        <div class="enroll-hero-inner">
+            <h1>Start Your Journey with Tajweed Quran Academy</h1>
+            <p>Fill in your details below. We'll contact you within 24 hours to arrange your free trial class — no payment needed.</p>
+            <div class="trust-badges">
+                <span class="trust-badge">3 Free Trial Classes</span>
+                <span class="trust-badge">No Payment Required</span>
+                <span class="trust-badge">Male & Female Teachers</span>
+                <span class="trust-badge">500+ Students Worldwide</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enroll Form -->
+    <div class="enroll-body">
+
+        <!-- SECTION 1 -->
+        <span class="enroll-section-label">Step 1 of 3</span>
+        <h2 class="enroll-section-title">Personal Information</h2>
+        <p class="enroll-section-desc">Tell us about your student and family. All information is kept strictly private.</p>
+
+        <form id="enroll-form" class="enroll-form-card" onsubmit="submitEnrollForm(event)">
+
+            <!-- Section 2: Main Fields -->
+            <div class="ef-grid-2">
+                <div class="ef-group">
+                    <label for="ef-student">Student Name *</label>
+                    <input type="text" id="ef-student" name="student_name" placeholder="Student's full name" required>
+                </div>
+                <div class="ef-group">
+                    <label for="ef-parent">Parent / Guardian Name *</label>
+                    <input type="text" id="ef-parent" name="parent_name" placeholder="Parent or guardian's name" required>
+                </div>
+            </div>
+
+            <div class="ef-grid-2">
+                <div class="ef-group">
+                    <label for="ef-email">Email Address *</label>
+                    <input type="email" id="ef-email" name="email" placeholder="you@email.com" required>
+                </div>
+                <div class="ef-group">
+                    <label for="ef-whatsapp">WhatsApp Number (with country code) *</label>
+                    <input type="tel" id="ef-whatsapp" name="whatsapp" placeholder="+44 7700 900000" required>
+                </div>
+            </div>
+
+            <hr class="enroll-divider" style="margin:24px 0 24px;">
+
+            <!-- Section 3: Additional Info -->
+            <p style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:#b8860b;margin-bottom:18px;">Step 2 — Additional Information</p>
+
+            <div class="ef-grid-2">
+                <div class="ef-group">
+                    <label for="ef-course">Select Course *</label>
+                    <select id="ef-course" name="course" required>
+                        <option value="">Choose a course...</option>
+                        <option value="Noorani Qaida">Noorani Qaida (Beginners)</option>
+                        <option value="Quran Reading with Tajweed">Quran Reading with Tajweed</option>
+                        <option value="Hifz-ul-Quran">Hifz-ul-Quran (Memorization)</option>
+                        <option value="Memorization Revision">Memorization Revision</option>
+                        <option value="Islamic Studies for Kids">Islamic Studies for Kids</option>
+                        <option value="Quran for Adults & Reverts">Quran for Adults &amp; Reverts</option>
+                    </select>
+                </div>
+                <div class="ef-group">
+                    <label for="ef-gender">Gender *</label>
+                    <select id="ef-gender" name="gender" required>
+                        <option value="">Select...</option>
+                        <option value="Male">Male – Prefer Male Teacher</option>
+                        <option value="Female">Female – Prefer Female Teacher</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="ef-grid-1 ef-group">
+                <label>How did you hear about us?</label>
+                <div class="ef-radio-group">
+                    <label class="ef-radio-label"><input type="radio" name="source" value="Google"> Google</label>
+                    <label class="ef-radio-label"><input type="radio" name="source" value="Facebook"> Facebook</label>
+                    <label class="ef-radio-label"><input type="radio" name="source" value="Instagram"> Instagram</label>
+                    <label class="ef-radio-label"><input type="radio" name="source" value="Pinterest"> Pinterest</label>
+                    <label class="ef-radio-label"><input type="radio" name="source" value="TikTok"> TikTok</label>
+                    <label class="ef-radio-label"><input type="radio" name="source" value="LinkedIn"> LinkedIn</label>
+                    <label class="ef-radio-label"><input type="radio" name="source" value="Direct"> Direct / Referral</label>
+                </div>
+            </div>
+
+            <div class="ef-grid-1 ef-group" style="margin-top:18px;">
+                <label>Would you like to start a free trial class?</label>
+                <div class="ef-radio-group">
+                    <label class="ef-radio-label"><input type="radio" name="free_trial" value="Yes" checked> Yes, please!</label>
+                    <label class="ef-radio-label"><input type="radio" name="free_trial" value="No"> Not yet</label>
+                </div>
+            </div>
+
+            <hr class="enroll-divider" style="margin:28px 0 24px;">
+
+            <!-- Section 4: CTA -->
+            <p style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:#b8860b;margin-bottom:14px;">Step 3 — Submit</p>
+            <button type="submit" class="enroll-submit-btn">Submit &amp; Start Free Trial</button>
+            <p class="ef-note">By submitting this form, you agree to our <a href="#policies">Privacy Policy</a>. We never share your data with third parties.</p>
+        </form>
+
+        <!-- Section 6: Address & Contact -->
+        <div class="enroll-info-panel">
+            <h3>Contact &amp; Office Information</h3>
+            <div class="info-row"><strong>Academy:</strong> Tajweed Quran Academy</div>
+            <div class="info-row"><strong>Address:</strong> 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom</div>
+            <div class="info-row"><strong>WhatsApp:</strong> +92 327 9906467 &nbsp;/&nbsp; +92 323 9965510</div>
+            <div class="info-row"><strong>Email:</strong> infotajweedquran@gmail.com</div>
+            <div class="info-internal-links">
+                <a href="index.html#courses">View Courses</a>
+                <a href="fees.html">Fees &amp; Pricing</a>
+                <a href="online-quran-academy-blog.html">Blog</a>
+                <a href="./tools/index.html">Islamic Tools</a>
+            </div>
+        </div>
+
+        <!-- Section 5: Policies -->
+        <div id="policies" class="policies-section">
+            <h3>Our Policies</h3>
+            <div class="policy-grid">
+                <div class="policy-card">
+                    <h4>Privacy Policy</h4>
+                    <p>All personal information provided is stored securely and never shared with third parties. Used only to contact you about your enrollment.</p>
+                </div>
+                <div class="policy-card">
+                    <h4>Refund Policy</h4>
+                    <p>Monthly fees are refundable within 7 days of the first paid class if you are not satisfied. No refund on free trial classes.</p>
+                </div>
+                <div class="policy-card">
+                    <h4>Service Policy</h4>
+                    <p>Classes are conducted online via Zoom, Skype, or Google Meet. Missed classes can be rescheduled with 2 hours notice.</p>
+                </div>
+                <div class="policy-card">
+                    <h4>Terms &amp; Conditions</h4>
+                    <p>Enrollment confirms acceptance of our teaching guidelines, payment schedule, and cancellation terms. Classes are 1-to-1 only.</p>
+                </div>
+                <div class="policy-card">
+                    <h4>Sitemap</h4>
+                    <p>
+                        <a href="index.html" style="color:#b8860b;">Home</a> ·
+                        <a href="fees.html" style="color:#b8860b;">Fees</a> ·
+                        <a href="online-quran-academy-blog.html" style="color:#b8860b;">Blog</a> ·
+                        <a href="sitemap.xml" style="color:#b8860b;">XML Sitemap</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer footer-dark">
+        <div class="container">
+            <div class="footer-top-row">
+                <div class="footer-col footer-brand">
+                    <img src="./images/logo.png" alt="Tajweed Quran Academy" class="footer-logo-big">
+                    <p class="footer-company-name">Tajweed Quran Academy</p>
+                    <p class="footer-tagline">Excellence in Online Tajweed Education since 2018. Specialist Tajweed classes for kids &amp; beginners across the UK &amp; Europe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#courses">Courses</a></li>
+                        <li><a href="fees.html">Fees &amp; Pricing</a></li>
+                        <li><a href="online-quran-academy-blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">We Are Social</h4>
+                    <div class="footer-social-icons">
+                        <a href="https://www.facebook.com/share/1PPkL7isA1/" target="_blank" class="fsocial-btn" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <a href="https://wa.me/923279906467" target="_blank" class="fsocial-btn" aria-label="WhatsApp">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.99 2C6.477 2 2 6.477 2 11.99c0 1.767.47 3.45 1.333 4.908L2 22l5.232-1.32A9.979 9.979 0 0 0 11.99 22C17.523 22 22 17.523 22 11.99 22 6.477 17.523 2 11.99 2z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/lqwacademy" target="_blank" class="fsocial-btn" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                        <a href="https://pinterest.com" target="_blank" class="fsocial-btn" aria-label="Pinterest">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+                        </a>
+                    </div>
+                    <div class="footer-address">
+                        <p class="footer-addr-line">71-75 Shelton Street, Covent Garden</p>
+                        <p class="footer-addr-line">London, WC2H 9JQ, United Kingdom</p>
+                        <p class="footer-addr-line" style="margin-top:8px;"><a href="https://wa.me/923279906467">+92 327 9906467</a></p>
+                        <p class="footer-addr-line"><a href="mailto:infotajweedquran@gmail.com">infotajweedquran@gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Tajweed Quran Academy – All Rights Reserved</p>
+                <div class="footer-policy-links">
+                    <a href="#policies">Privacy Policy</a>
+                    <a href="#policies">Refund Policy</a>
+                    <a href="#policies">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/923279906467" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+
+    <script src="script.js"></script>
+    <script>
+        function submitEnrollForm(e) {
+            e.preventDefault();
+            const f = e.target;
+            const student = f.student_name.value;
+            const parent = f.parent_name.value;
+            const email = f.email.value;
+            const wa = f.whatsapp.value;
+            const course = f.course.value;
+            const gender = f.gender.value;
+            const source = f.source ? [...f.source].find(r => r.checked)?.value || 'Not specified' : 'Not specified';
+            const trial = f.free_trial ? [...f.free_trial].find(r => r.checked)?.value || 'Yes' : 'Yes';
+
+            const msg = `New Enrollment Request%0A%0AStudent: ${encodeURIComponent(student)}%0AParent: ${encodeURIComponent(parent)}%0AEmail: ${encodeURIComponent(email)}%0AWhatsApp: ${encodeURIComponent(wa)}%0ACourse: ${encodeURIComponent(course)}%0AGender: ${encodeURIComponent(gender)}%0ASource: ${encodeURIComponent(source)}%0AFree Trial: ${encodeURIComponent(trial)}`;
+            window.open(`https://wa.me/923279906467?text=${msg}`, '_blank');
+        }
+    </script>
+</body>
+</html>
