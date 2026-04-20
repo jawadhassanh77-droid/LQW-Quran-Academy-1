@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hijri Date Converter 2026 | Islamic Calendar Tool – Tajweed Quran Academy</title>
+    <meta name="description" content="Convert any date between Hijri Islamic calendar and Gregorian calendar for free. Accurate Hijri date conversion for Muslims worldwide.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .tool-hero { background: linear-gradient(135deg, #1a3a52, #2d6e3f); padding: 50px 0 35px; text-align: center; color: white; }
+        .tool-hero h1 { font-size: 36px; color: white; margin-bottom: 10px; }
+        .tool-hero p { opacity: 0.9; font-size: 16px; }
+        .hijri-body { max-width: 600px; margin: 40px auto; padding: 0 20px 60px; }
+        .hijri-card { background: white; border-radius: 16px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .tabs { display: flex; gap: 0; margin-bottom: 30px; border-radius: 10px; overflow: hidden; border: 2px solid #2d6e3f; }
+        .tab-btn { flex: 1; padding: 12px; background: white; color: #2d6e3f; border: none; font-weight: 600; cursor: pointer; font-family: 'Poppins', sans-serif; font-size: 14px; transition: all 0.2s; }
+        .tab-btn.active { background: #2d6e3f; color: white; }
+        .field-group { margin-bottom: 18px; }
+        .field-group label { display: block; font-weight: 600; margin-bottom: 6px; color: #1a3a52; font-size: 14px; }
+        .field-group input { width: 100%; padding: 12px 15px; border: 2px solid #e9ecef; border-radius: 8px; font-size: 15px; font-family: 'Poppins', sans-serif; }
+        .field-group input:focus { outline: none; border-color: #2d6e3f; }
+        .convert-btn { width: 100%; background: linear-gradient(135deg, #2d6e3f, #3a8f51); color: white; border: none; padding: 15px; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.3s; margin-top: 10px; font-family: 'Poppins', sans-serif; }
+        .convert-btn:hover { box-shadow: 0 6px 18px rgba(45,110,63,0.35); transform: translateY(-2px); }
+        .result-box { margin-top: 25px; background: #f0f9f3; border: 2px solid #2d6e3f; border-radius: 12px; padding: 25px; text-align: center; display: none; }
+        .result-date { font-size: 28px; font-weight: 700; color: #2d6e3f; }
+        .result-label { font-size: 14px; color: #666; margin-top: 8px; }
+        .today-box { background: #fff8e8; border: 2px solid #b8860b; border-radius: 12px; padding: 20px; margin-bottom: 25px; text-align: center; }
+        .today-box h3 { color: #b8860b; font-size: 16px; margin-bottom: 8px; }
+        .today-box .today-dates { font-size: 18px; font-weight: 700; color: #1a3a52; }
+        .back-link { display: inline-block; margin-top: 25px; color: #2d6e3f; font-weight: 600; text-decoration: none; }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="../images/logo.png" alt="Tajweed Quran Academy Logo">
+                <span>Tajweed Quran Academy</span>
+            </div>
+            <nav id="nav-menu" class="nav-menu">
+                <a href="../index.html">Home</a>
+                <a href="../index.html#courses">Courses</a>
+                <a href="../blog.html">Blog</a>
+                <a href="index.html">Tools</a>
+                <a href="../index.html#contact">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <a href="https://wa.me/923279906467" class="btn btn-primary btn-sm" target="_blank">Free Trial</a>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="tool-hero">
+        <div class="container">
+            <h1>📅 Hijri Date Converter</h1>
+            <p>Convert between Islamic Hijri and Gregorian calendars instantly.</p>
+        </div>
+    </div>
+
+    <div class="hijri-body">
+        <div class="hijri-card">
+            <div class="today-box">
+                <h3>Today's Date</h3>
+                <div class="today-dates" id="today-display">Loading...</div>
+            </div>
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('greg-to-hijri', this)">Gregorian → Hijri</button>
+                <button class="tab-btn" onclick="showTab('hijri-to-greg', this)">Hijri → Gregorian</button>
+            </div>
+            <div id="greg-to-hijri">
+                <div class="field-group">
+                    <label>Enter Gregorian Date</label>
+                    <input type="date" id="greg-input">
+                </div>
+                <button class="convert-btn" onclick="convertToHijri()">Convert to Hijri</button>
+            </div>
+            <div id="hijri-to-greg" style="display:none;">
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+                    <div class="field-group">
+                        <label>Hijri Year</label>
+                        <input type="number" id="h-year" placeholder="1447" min="1">
+                    </div>
+                    <div class="field-group">
+                        <label>Month (1-12)</label>
+                        <input type="number" id="h-month" placeholder="9" min="1" max="12">
+                    </div>
+                    <div class="field-group">
+                        <label>Day (1-30)</label>
+                        <input type="number" id="h-day" placeholder="1" min="1" max="30">
+                    </div>
+                </div>
+                <button class="convert-btn" onclick="convertToGreg()">Convert to Gregorian</button>
+            </div>
+            <div class="result-box" id="result-box">
+                <div class="result-date" id="result-date"></div>
+                <div class="result-label" id="result-label"></div>
+            </div>
+        </div>
+        <a href="index.html" class="back-link">← Back to All Tools</a>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Tajweed Quran Academy – <a href="../index.html" style="color:var(--primary-gold);">Back to Home</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        const hijriMonths = ['Muharram','Safar','Rabi al-Awwal','Rabi al-Thani','Jumada al-Awwal','Jumada al-Thani','Rajab',"Sha'ban",'Ramadan','Shawwal','Dhul Qadah','Dhul Hijjah'];
+
+        function toHijri(date) {
+            const jd = Math.floor((date.getTime() / 86400000) + 2440587.5);
+            let l = jd - 1948440 + 10632;
+            const n = Math.floor((l - 1) / 10631);
+            l -= 10631 * n - 354;
+            const j = Math.floor((10985 - l) / 5316) * Math.floor((50 * l) / 17719) + Math.floor(l / 5670) * Math.floor((43 * l) / 15238);
+            l -= Math.floor((30 - j) / 15) * Math.floor((17719 * j) / 50) + Math.floor(j / 16) * Math.floor((15238 * j) / 43);
+            const year = 30 * n + j - 30;
+            const month = Math.ceil(l / 29.5);
+            const day = l - Math.floor(29.5 * (month - 1));
+            return { year, month: Math.min(month, 12), day };
+        }
+
+        function fromHijri(hy, hm, hd) {
+            const n = Math.floor((hy - 1) / 30);
+            const y = hy - 30 * n - 1;
+            const jd = Math.floor(10631 * n / 30) + Math.ceil(29.5 * (hm - 1)) + hd + 1948440 - 385 + Math.floor((11 * y + 3) / 30);
+            return new Date((jd - 2440587.5) * 86400000);
+        }
+
+        window.onload = function() {
+            const now = new Date();
+            const h = toHijri(now);
+            document.getElementById('today-display').innerHTML =
+                `${now.toLocaleDateString('en-GB', {weekday:'long', year:'numeric', month:'long', day:'numeric'})}<br>
+                 <span style="color:#2d6e3f;">${h.day} ${hijriMonths[h.month-1]} ${h.year} AH</span>`;
+            document.getElementById('greg-input').value = now.toISOString().split('T')[0];
+        };
+
+        function showTab(id, btn) {
+            document.getElementById('greg-to-hijri').style.display = 'none';
+            document.getElementById('hijri-to-greg').style.display = 'none';
+            document.getElementById(id).style.display = 'block';
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('result-box').style.display = 'none';
+        }
+
+        function convertToHijri() {
+            const val = document.getElementById('greg-input').value;
+            if (!val) return;
+            const date = new Date(val + 'T12:00:00');
+            const h = toHijri(date);
+            document.getElementById('result-date').textContent = `${h.day} ${hijriMonths[h.month-1]} ${h.year} AH`;
+            document.getElementById('result-label').textContent = 'Hijri / Islamic Date';
+            document.getElementById('result-box').style.display = 'block';
+        }
+
+        function convertToGreg() {
+            const hy = parseInt(document.getElementById('h-year').value);
+            const hm = parseInt(document.getElementById('h-month').value);
+            const hd = parseInt(document.getElementById('h-day').value);
+            if (!hy || !hm || !hd) return;
+            const date = fromHijri(hy, hm, hd);
+            document.getElementById('result-date').textContent = date.toLocaleDateString('en-GB', {year:'numeric', month:'long', day:'numeric'});
+            document.getElementById('result-label').textContent = 'Gregorian Date';
+            document.getElementById('result-box').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

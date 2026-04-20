@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Digital Tasbeeh Counter | Islamic Dhikr Counter – Tajweed Quran Academy</title>
+    <meta name="description" content="Use our free digital Tasbeeh counter for SubhanAllah, Alhamdulillah, Allahu Akbar, and custom dhikr. Reset anytime.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .tool-hero { background: linear-gradient(135deg, #1a3a52, #2d6e3f); padding: 50px 0 35px; text-align: center; color: white; }
+        .tool-hero h1 { font-size: 36px; color: white; margin-bottom: 10px; }
+        .tool-hero p { opacity: 0.9; font-size: 16px; }
+        .tasbeeh-body { max-width: 480px; margin: 50px auto; padding: 0 20px 60px; }
+        .tasbeeh-card { background: white; border-radius: 20px; padding: 40px 30px; box-shadow: 0 4px 25px rgba(0,0,0,0.1); text-align: center; }
+        .dhikr-selector { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 30px; }
+        .dhikr-btn { border: 2px solid #2d6e3f; background: white; color: #2d6e3f; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.2s; font-family: 'Poppins', sans-serif; }
+        .dhikr-btn.active, .dhikr-btn:hover { background: #2d6e3f; color: white; }
+        .dhikr-arabic { font-size: 28px; color: #1a3a52; margin-bottom: 8px; font-weight: 700; direction: rtl; line-height: 1.4; }
+        .dhikr-transliteration { font-size: 15px; color: #6c757d; margin-bottom: 30px; }
+        .count-display { font-size: 90px; font-weight: 700; color: #2d6e3f; line-height: 1; margin-bottom: 8px; }
+        .count-target { font-size: 14px; color: #999; margin-bottom: 30px; }
+        .tap-btn { width: 160px; height: 160px; border-radius: 50%; background: linear-gradient(135deg, #2d6e3f, #3a8f51); color: white; border: none; font-size: 18px; font-weight: 700; cursor: pointer; transition: all 0.15s; box-shadow: 0 8px 20px rgba(45,110,63,0.35); font-family: 'Poppins', sans-serif; margin-bottom: 25px; }
+        .tap-btn:active { transform: scale(0.94); box-shadow: 0 4px 10px rgba(45,110,63,0.25); }
+        .action-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .reset-btn, .set-target-btn { padding: 10px 22px; border-radius: 20px; border: 2px solid #2d6e3f; background: white; color: #2d6e3f; font-weight: 600; cursor: pointer; font-family: 'Poppins', sans-serif; font-size: 14px; transition: all 0.2s; }
+        .reset-btn:hover, .set-target-btn:hover { background: #2d6e3f; color: white; }
+        .target-row { margin-top: 18px; display: flex; gap: 10px; align-items: center; justify-content: center; }
+        .target-row input { width: 80px; padding: 8px 12px; border: 2px solid #e9ecef; border-radius: 8px; text-align: center; font-size: 15px; font-family: 'Poppins', sans-serif; }
+        .target-row input:focus { outline: none; border-color: #2d6e3f; }
+        .back-link { display: inline-block; margin-top: 25px; color: #2d6e3f; font-weight: 600; text-decoration: none; }
+        .back-link:hover { text-decoration: underline; }
+        .completed-msg { color: #b8860b; font-weight: 700; font-size: 16px; margin-top: 10px; display: none; }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="../images/logo.png" alt="Tajweed Quran Academy Logo">
+                <span>Tajweed Quran Academy</span>
+            </div>
+            <nav id="nav-menu" class="nav-menu">
+                <a href="../index.html">Home</a>
+                <a href="../index.html#courses">Courses</a>
+                <a href="../blog.html">Blog</a>
+                <a href="index.html">Tools</a>
+                <a href="../index.html#contact">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <a href="https://wa.me/923279906467" class="btn btn-primary btn-sm" target="_blank">Free Trial</a>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="tool-hero">
+        <div class="container">
+            <h1>📿 Digital Tasbeeh Counter</h1>
+            <p>Keep track of your dhikr with our simple, free Tasbeeh counter.</p>
+        </div>
+    </div>
+
+    <div class="tasbeeh-body">
+        <div class="tasbeeh-card">
+            <div class="dhikr-selector">
+                <button class="dhikr-btn active" onclick="setDhikr('subhanallah')">SubhanAllah</button>
+                <button class="dhikr-btn" onclick="setDhikr('alhamdulillah')">Alhamdulillah</button>
+                <button class="dhikr-btn" onclick="setDhikr('allahuakbar')">Allahu Akbar</button>
+                <button class="dhikr-btn" onclick="setDhikr('astaghfirullah')">Astaghfirullah</button>
+                <button class="dhikr-btn" onclick="setDhikr('custom')">Custom</button>
+            </div>
+            <div class="dhikr-arabic" id="dhikr-arabic">سُبْحَانَ اللَّهِ</div>
+            <div class="dhikr-transliteration" id="dhikr-trans">SubhanAllah – Glory be to Allah</div>
+            <div class="count-display" id="count">0</div>
+            <div class="count-target" id="count-target">Target: 33</div>
+            <button class="tap-btn" onclick="increment()">TAP</button>
+            <div class="completed-msg" id="completed-msg">🎉 Target Completed! MashaAllah!</div>
+            <div class="action-row">
+                <button class="reset-btn" onclick="resetCount()">Reset</button>
+                <button class="set-target-btn" onclick="toggleTargetInput()">Set Target</button>
+            </div>
+            <div class="target-row" id="target-row" style="display:none;">
+                <input type="number" id="target-input" placeholder="33" min="1">
+                <button class="dhikr-btn" onclick="applyTarget()">Apply</button>
+            </div>
+        </div>
+        <a href="index.html" class="back-link">← Back to All Tools</a>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Tajweed Quran Academy – <a href="../index.html" style="color:var(--primary-gold);">Back to Home</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        let count = 0;
+        let target = 33;
+
+        const dhikrData = {
+            subhanallah:   { arabic: 'سُبْحَانَ اللَّهِ', trans: 'SubhanAllah – Glory be to Allah', target: 33 },
+            alhamdulillah: { arabic: 'الْحَمْدُ لِلَّهِ', trans: 'Alhamdulillah – All praise is for Allah', target: 33 },
+            allahuakbar:   { arabic: 'اللَّهُ أَكْبَرُ', trans: 'Allahu Akbar – Allah is the Greatest', target: 34 },
+            astaghfirullah:{ arabic: 'أَسْتَغْفِرُ اللَّهَ', trans: 'Astaghfirullah – I seek forgiveness from Allah', target: 100 },
+            custom:        { arabic: 'ذِكْر', trans: 'Custom Dhikr', target: 100 }
+        };
+
+        function setDhikr(key) {
+            document.querySelectorAll('.dhikr-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            const d = dhikrData[key];
+            document.getElementById('dhikr-arabic').textContent = d.arabic;
+            document.getElementById('dhikr-trans').textContent = d.trans;
+            target = d.target;
+            document.getElementById('count-target').textContent = 'Target: ' + target;
+            count = 0;
+            document.getElementById('count').textContent = '0';
+            document.getElementById('completed-msg').style.display = 'none';
+        }
+
+        function increment() {
+            count++;
+            document.getElementById('count').textContent = count;
+            if (count === target) {
+                document.getElementById('completed-msg').style.display = 'block';
+                if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+            }
+        }
+
+        function resetCount() {
+            count = 0;
+            document.getElementById('count').textContent = '0';
+            document.getElementById('completed-msg').style.display = 'none';
+        }
+
+        function toggleTargetInput() {
+            const row = document.getElementById('target-row');
+            row.style.display = row.style.display === 'none' ? 'flex' : 'none';
+        }
+
+        function applyTarget() {
+            const val = parseInt(document.getElementById('target-input').value);
+            if (val > 0) {
+                target = val;
+                document.getElementById('count-target').textContent = 'Target: ' + target;
+                document.getElementById('target-row').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

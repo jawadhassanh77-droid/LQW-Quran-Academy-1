@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quran Word Counter | Free Arabic & Text Counter Tool – Tajweed Quran Academy</title>
+    <meta name="description" content="Count words, characters, and letters in Arabic Quran text or English. Free Quran word counter tool for students and teachers.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .tool-hero { background: linear-gradient(135deg, #1a3a52, #2d6e3f); padding: 50px 0 35px; text-align: center; color: white; }
+        .tool-hero h1 { font-size: 36px; color: white; margin-bottom: 10px; }
+        .tool-hero p { opacity: 0.9; font-size: 16px; }
+        .counter-body { max-width: 700px; margin: 40px auto; padding: 0 20px 60px; }
+        .counter-card { background: white; border-radius: 16px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .textarea-wrap { position: relative; margin-bottom: 20px; }
+        .counter-textarea { width: 100%; min-height: 200px; padding: 15px; border: 2px solid #e9ecef; border-radius: 10px; font-size: 16px; font-family: 'Poppins', sans-serif; resize: vertical; transition: border-color 0.3s; line-height: 1.7; }
+        .counter-textarea:focus { outline: none; border-color: #2d6e3f; }
+        .clear-btn-inside { position: absolute; top: 10px; right: 12px; background: #e9ecef; border: none; border-radius: 6px; padding: 4px 10px; font-size: 12px; cursor: pointer; color: #666; font-family: 'Poppins', sans-serif; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 16px; margin-bottom: 25px; }
+        .stat-box { background: #f8f9fa; border-radius: 12px; padding: 18px 15px; text-align: center; border: 2px solid #e9ecef; }
+        .stat-box .val { font-size: 32px; font-weight: 700; color: #2d6e3f; }
+        .stat-box .lbl { font-size: 12px; color: #6c757d; font-weight: 600; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .actions-row { display: flex; gap: 12px; flex-wrap: wrap; }
+        .action-btn { padding: 11px 22px; border-radius: 8px; border: 2px solid #2d6e3f; background: white; color: #2d6e3f; font-weight: 600; cursor: pointer; font-family: 'Poppins', sans-serif; font-size: 14px; transition: all 0.2s; }
+        .action-btn:hover { background: #2d6e3f; color: white; }
+        .action-btn.primary { background: #2d6e3f; color: white; }
+        .action-btn.primary:hover { background: #3a8f51; }
+        .sample-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+        .sample-btn { background: #fff8e8; border: 2px solid #b8860b; color: #b8860b; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: 'Poppins', sans-serif; transition: all 0.2s; }
+        .sample-btn:hover { background: #b8860b; color: white; }
+        .back-link { display: inline-block; margin-top: 25px; color: #2d6e3f; font-weight: 600; text-decoration: none; }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="../images/logo.png" alt="Tajweed Quran Academy Logo">
+                <span>Tajweed Quran Academy</span>
+            </div>
+            <nav id="nav-menu" class="nav-menu">
+                <a href="../index.html">Home</a>
+                <a href="../index.html#courses">Courses</a>
+                <a href="../blog.html">Blog</a>
+                <a href="index.html">Tools</a>
+                <a href="../index.html#contact">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <a href="https://wa.me/923279906467" class="btn btn-primary btn-sm" target="_blank">Free Trial</a>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="tool-hero">
+        <div class="container">
+            <h1>📖 Quran Word Counter</h1>
+            <p>Count words, characters, and sentences in any Arabic or English text.</p>
+        </div>
+    </div>
+
+    <div class="counter-body">
+        <div class="counter-card">
+            <p style="font-size:14px;color:#6c757d;margin-bottom:12px;">Paste your Quranic verse or any text below. Stats update in real-time.</p>
+            <div class="sample-btns">
+                <span style="font-size:13px;color:#999;align-self:center;">Try a sample:</span>
+                <button class="sample-btn" onclick="loadSample('al-fatiha')">Al-Fatiha</button>
+                <button class="sample-btn" onclick="loadSample('ayat-al-kursi')">Ayat al-Kursi</button>
+                <button class="sample-btn" onclick="loadSample('al-ikhlas')">Al-Ikhlas</button>
+            </div>
+            <div class="textarea-wrap">
+                <textarea class="counter-textarea" id="text-input" placeholder="Paste Arabic or English text here..." oninput="updateStats()"></textarea>
+                <button class="clear-btn-inside" onclick="clearText()">Clear</button>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-box"><div class="val" id="word-count">0</div><div class="lbl">Words</div></div>
+                <div class="stat-box"><div class="val" id="char-count">0</div><div class="lbl">Characters</div></div>
+                <div class="stat-box"><div class="val" id="char-no-space">0</div><div class="lbl">No Spaces</div></div>
+                <div class="stat-box"><div class="val" id="sentence-count">0</div><div class="lbl">Sentences</div></div>
+                <div class="stat-box"><div class="val" id="para-count">0</div><div class="lbl">Paragraphs</div></div>
+                <div class="stat-box"><div class="val" id="read-time">0</div><div class="lbl">Read (mins)</div></div>
+            </div>
+            <div class="actions-row">
+                <button class="action-btn primary" onclick="copyText()">📋 Copy Text</button>
+                <button class="action-btn" onclick="clearText()">🗑 Clear</button>
+                <button class="action-btn" onclick="downloadText()">⬇ Download</button>
+            </div>
+        </div>
+        <a href="index.html" class="back-link">← Back to All Tools</a>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Tajweed Quran Academy – <a href="../index.html" style="color:var(--primary-gold);">Back to Home</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        const samples = {
+            'al-fatiha': 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ الرَّحْمَٰنِ الرَّحِيمِ مَالِكِ يَوْمِ الدِّينِ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ',
+            'ayat-al-kursi': 'اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ',
+            'al-ikhlas': 'قُلْ هُوَ اللَّهُ أَحَدٌ اللَّهُ الصَّمَدُ لَمْ يَلِدْ وَلَمْ يُولَدْ وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ'
+        };
+
+        function loadSample(key) {
+            document.getElementById('text-input').value = samples[key];
+            updateStats();
+        }
+
+        function updateStats() {
+            const text = document.getElementById('text-input').value;
+            const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+            const chars = text.length;
+            const charsNoSpace = text.replace(/\s/g, '').length;
+            const sentences = text.split(/[.!?؟]+/).filter(s => s.trim().length > 0).length;
+            const paras = text.trim() === '' ? 0 : text.trim().split(/\n+/).filter(p => p.trim().length > 0).length;
+            const readTime = Math.ceil(words / 200);
+
+            document.getElementById('word-count').textContent = words;
+            document.getElementById('char-count').textContent = chars;
+            document.getElementById('char-no-space').textContent = charsNoSpace;
+            document.getElementById('sentence-count').textContent = sentences;
+            document.getElementById('para-count').textContent = Math.max(paras, 0);
+            document.getElementById('read-time').textContent = readTime;
+        }
+
+        function clearText() {
+            document.getElementById('text-input').value = '';
+            updateStats();
+        }
+
+        function copyText() {
+            const text = document.getElementById('text-input').value;
+            navigator.clipboard.writeText(text).then(() => alert('Text copied!'));
+        }
+
+        function downloadText() {
+            const text = document.getElementById('text-input').value;
+            const blob = new Blob([text], { type: 'text/plain' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'quran-text.txt';
+            a.click();
+        }
+    </script>
+</body>
+</html>

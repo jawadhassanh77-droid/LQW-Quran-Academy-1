@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qibla Finder – Find Qibla Direction from Your Location | Tajweed Quran Academy</title>
+    <meta name="description" content="Find the exact Qibla direction (Kaaba in Mecca) from your current location using GPS. Free online Qibla finder for Muslims worldwide.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .tool-hero { background: linear-gradient(135deg, #1a3a52, #2d6e3f); padding: 50px 0 35px; text-align: center; color: white; }
+        .tool-hero h1 { font-size: 36px; color: white; margin-bottom: 10px; }
+        .tool-hero p { opacity: 0.9; font-size: 16px; }
+        .qibla-body { max-width: 500px; margin: 40px auto; padding: 0 20px 60px; text-align: center; }
+        .qibla-card { background: white; border-radius: 16px; padding: 35px 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .locate-btn { background: linear-gradient(135deg, #2d6e3f, #3a8f51); color: white; border: none; padding: 15px 40px; border-radius: 30px; font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.3s; font-family: 'Poppins', sans-serif; margin-bottom: 30px; }
+        .locate-btn:hover { box-shadow: 0 6px 18px rgba(45,110,63,0.35); transform: translateY(-2px); }
+        .compass-wrap { position: relative; width: 220px; height: 220px; margin: 0 auto 20px; }
+        .compass-ring { width: 220px; height: 220px; border-radius: 50%; border: 4px solid #e9ecef; background: radial-gradient(circle, #f8f9fa, white); display: flex; align-items: center; justify-content: center; position: relative; }
+        .compass-ring::before { content: 'N'; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); font-weight: 700; color: #dc3545; font-size: 16px; }
+        .compass-ring::after { content: 'S'; position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); font-weight: 700; color: #999; font-size: 14px; }
+        .qibla-arrow { width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-bottom: 90px solid #2d6e3f; position: absolute; top: 50%; left: 50%; transform-origin: bottom center; transform: translate(-50%, -100%) rotate(0deg); transition: transform 1s ease; }
+        .kaaba-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 22px; z-index: 2; }
+        .degree-display { font-size: 36px; font-weight: 700; color: #2d6e3f; margin-bottom: 8px; }
+        .location-info { font-size: 13px; color: #999; margin-bottom: 20px; }
+        .status-msg { font-size: 15px; color: #6c757d; margin-bottom: 20px; }
+        .back-link { display: inline-block; margin-top: 25px; color: #2d6e3f; font-weight: 600; text-decoration: none; }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="../images/logo.png" alt="Tajweed Quran Academy Logo">
+                <span>Tajweed Quran Academy</span>
+            </div>
+            <nav id="nav-menu" class="nav-menu">
+                <a href="../index.html">Home</a>
+                <a href="../index.html#courses">Courses</a>
+                <a href="../blog.html">Blog</a>
+                <a href="index.html">Tools</a>
+                <a href="../index.html#contact">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <a href="https://wa.me/923279906467" class="btn btn-primary btn-sm" target="_blank">Free Trial</a>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="tool-hero">
+        <div class="container">
+            <h1>🧭 Qibla Finder</h1>
+            <p>Find the direction of the Kaaba from your exact location.</p>
+        </div>
+    </div>
+
+    <div class="qibla-body">
+        <div class="qibla-card">
+            <p class="status-msg" id="status-msg">Click the button below to detect your location and find Qibla direction.</p>
+            <button class="locate-btn" onclick="findQibla()">📍 Find My Qibla</button>
+            <div class="compass-wrap">
+                <div class="compass-ring">
+                    <div class="qibla-arrow" id="qibla-arrow"></div>
+                    <div class="kaaba-icon">🕋</div>
+                </div>
+            </div>
+            <div class="degree-display" id="degree-display" style="display:none;"></div>
+            <div class="location-info" id="location-info"></div>
+        </div>
+        <a href="index.html" class="back-link">← Back to All Tools</a>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Tajweed Quran Academy – <a href="../index.html" style="color:var(--primary-gold);">Back to Home</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        const KAABA_LAT = 21.4225;
+        const KAABA_LNG = 39.8262;
+
+        function toRad(deg) { return deg * Math.PI / 180; }
+        function toDeg(rad) { return rad * 180 / Math.PI; }
+
+        function calcQibla(lat, lng) {
+            const dLng = toRad(KAABA_LNG - lng);
+            const lat1 = toRad(lat);
+            const lat2 = toRad(KAABA_LAT);
+            const y = Math.sin(dLng) * Math.cos(lat2);
+            const x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLng);
+            let brng = toDeg(Math.atan2(y, x));
+            return (brng + 360) % 360;
+        }
+
+        function findQibla() {
+            const statusEl = document.getElementById('status-msg');
+            if (!navigator.geolocation) {
+                statusEl.textContent = 'Geolocation is not supported by your browser.';
+                return;
+            }
+            statusEl.textContent = '🔍 Detecting your location...';
+            navigator.geolocation.getCurrentPosition(
+                function(pos) {
+                    const lat = pos.coords.latitude;
+                    const lng = pos.coords.longitude;
+                    const qibla = calcQibla(lat, lng);
+                    document.getElementById('qibla-arrow').style.transform =
+                        `translate(-50%, -100%) rotate(${qibla}deg)`;
+                    document.getElementById('degree-display').textContent = `${qibla.toFixed(1)}° from North`;
+                    document.getElementById('degree-display').style.display = 'block';
+                    document.getElementById('location-info').textContent =
+                        `Your location: ${lat.toFixed(4)}°N, ${lng.toFixed(4)}°E`;
+                    statusEl.textContent = 'Qibla direction found! Face the green arrow direction to pray towards Mecca.';
+                },
+                function(err) {
+                    statusEl.textContent = 'Could not get location. Please allow location access and try again.';
+                },
+                { timeout: 10000 }
+            );
+        }
+    </script>
+</body>
+</html>

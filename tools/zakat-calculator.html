@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zakat Calculator 2026 | Free Islamic Zakat Tool – Tajweed Quran Academy</title>
+    <meta name="description" content="Calculate your Zakat for 2026 using our free Islamic Zakat Calculator. Enter your gold, silver, cash, and assets to find your Zakat amount.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .tool-hero { background: linear-gradient(135deg, #1a3a52, #2d6e3f); padding: 50px 0 35px; text-align: center; color: white; }
+        .tool-hero h1 { font-size: 36px; color: white; margin-bottom: 10px; }
+        .tool-hero p { opacity: 0.9; font-size: 16px; }
+        .tool-body { max-width: 700px; margin: 40px auto; padding: 0 20px 60px; }
+        .zakat-card { background: white; border-radius: 16px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .zakat-card h2 { color: #2d6e3f; font-size: 22px; margin-bottom: 20px; }
+        .field-group { margin-bottom: 18px; }
+        .field-group label { display: block; font-weight: 600; margin-bottom: 6px; color: #1a3a52; font-size: 14px; }
+        .field-group input { width: 100%; padding: 12px 15px; border: 2px solid #e9ecef; border-radius: 8px; font-size: 15px; font-family: 'Poppins', sans-serif; transition: border-color 0.3s; }
+        .field-group input:focus { outline: none; border-color: #2d6e3f; }
+        .calc-btn { width: 100%; background: linear-gradient(135deg, #2d6e3f, #3a8f51); color: white; border: none; padding: 15px; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.3s; margin-top: 10px; }
+        .calc-btn:hover { box-shadow: 0 6px 18px rgba(45,110,63,0.35); transform: translateY(-2px); }
+        .result-box { margin-top: 25px; background: #f0f9f3; border: 2px solid #2d6e3f; border-radius: 12px; padding: 20px; display: none; text-align: center; }
+        .result-box .result-amount { font-size: 36px; font-weight: 700; color: #2d6e3f; }
+        .result-box p { color: #444; margin-top: 8px; font-size: 14px; }
+        .nisab-info { background: #fff8e8; border-left: 4px solid #b8860b; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 13px; color: #555; }
+        .back-link { display: inline-block; margin-top: 25px; color: #2d6e3f; font-weight: 600; text-decoration: none; }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="../images/logo.png" alt="Tajweed Quran Academy Logo">
+                <span>Tajweed Quran Academy</span>
+            </div>
+            <nav id="nav-menu" class="nav-menu">
+                <a href="../index.html">Home</a>
+                <a href="../index.html#courses">Courses</a>
+                <a href="../blog.html">Blog</a>
+                <a href="index.html">Tools</a>
+                <a href="../index.html#contact">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <a href="https://wa.me/923279906467" class="btn btn-primary btn-sm" target="_blank">Free Trial</a>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="tool-hero">
+        <div class="container">
+            <h1>🕌 Zakat Calculator 2026</h1>
+            <p>Calculate your obligatory Zakat accurately. Enter your assets below.</p>
+        </div>
+    </div>
+
+    <div class="tool-body">
+        <div class="zakat-card">
+            <div class="nisab-info">
+                <strong>Nisab (2026 approx.):</strong> Gold Nisab = 87.48g × gold price | Silver Nisab = 612.36g × silver price.<br>
+                Zakat rate is <strong>2.5%</strong> of your total zakatable wealth above the Nisab threshold.
+            </div>
+            <h2>Enter Your Assets</h2>
+            <div class="field-group">
+                <label>Cash &amp; Bank Balance (£)</label>
+                <input type="number" id="cash" placeholder="0.00" min="0">
+            </div>
+            <div class="field-group">
+                <label>Gold Value (£)</label>
+                <input type="number" id="gold" placeholder="0.00" min="0">
+            </div>
+            <div class="field-group">
+                <label>Silver Value (£)</label>
+                <input type="number" id="silver" placeholder="0.00" min="0">
+            </div>
+            <div class="field-group">
+                <label>Business / Investment Assets (£)</label>
+                <input type="number" id="business" placeholder="0.00" min="0">
+            </div>
+            <div class="field-group">
+                <label>Money Owed to You (£)</label>
+                <input type="number" id="owed" placeholder="0.00" min="0">
+            </div>
+            <div class="field-group">
+                <label>Debts You Owe (£) – will be deducted</label>
+                <input type="number" id="debts" placeholder="0.00" min="0">
+            </div>
+            <div class="field-group">
+                <label>Nisab Threshold (£) – enter current gold Nisab value</label>
+                <input type="number" id="nisab" placeholder="e.g. 4800" min="0">
+            </div>
+            <button class="calc-btn" onclick="calculateZakat()">Calculate My Zakat</button>
+
+            <div class="result-box" id="result-box">
+                <p>Your Estimated Zakat for 2026:</p>
+                <div class="result-amount" id="zakat-amount">£0.00</div>
+                <p>This is 2.5% of your net zakatable wealth above the Nisab. Please verify with a scholar if uncertain.</p>
+            </div>
+        </div>
+        <a href="index.html" class="back-link">← Back to All Tools</a>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Tajweed Quran Academy – <a href="../index.html" style="color:var(--primary-gold);">Back to Home</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        function calculateZakat() {
+            const cash = parseFloat(document.getElementById('cash').value) || 0;
+            const gold = parseFloat(document.getElementById('gold').value) || 0;
+            const silver = parseFloat(document.getElementById('silver').value) || 0;
+            const business = parseFloat(document.getElementById('business').value) || 0;
+            const owed = parseFloat(document.getElementById('owed').value) || 0;
+            const debts = parseFloat(document.getElementById('debts').value) || 0;
+            const nisab = parseFloat(document.getElementById('nisab').value) || 4800;
+
+            const total = cash + gold + silver + business + owed - debts;
+            const box = document.getElementById('result-box');
+            const amountEl = document.getElementById('zakat-amount');
+
+            if (total <= 0) {
+                amountEl.textContent = '£0.00';
+                box.style.display = 'block';
+                box.style.borderColor = '#dc3545';
+                box.style.background = '#fff3f3';
+                return;
+            }
+
+            box.style.borderColor = '#2d6e3f';
+            box.style.background = '#f0f9f3';
+
+            if (total >= nisab) {
+                const zakat = total * 0.025;
+                amountEl.textContent = '£' + zakat.toFixed(2);
+            } else {
+                amountEl.textContent = '£0.00';
+                amountEl.style.color = '#b8860b';
+                document.querySelector('#result-box p').textContent = 'Your wealth is below the Nisab threshold. Zakat is not obligatory this year.';
+            }
+            box.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
