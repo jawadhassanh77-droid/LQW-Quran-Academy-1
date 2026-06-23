@@ -31,7 +31,7 @@
         .blog-archive-header h1 { color: var(--dark-navy); font-size: 42px; margin-bottom: 15px; }
         .blog-archive-header p { color: var(--text-light); font-size: 18px; max-width: 700px; margin: 0 auto; }
         
-        .blog-cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 35px; margin-bottom: 60px; }
+        .blog-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 35px; margin-bottom: 60px; }
         
         .blog-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: all 0.3s ease; display: flex; flex-direction: column; }
         .blog-card:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(0,0,0,0.15); }
@@ -53,6 +53,9 @@
         .read-more-btn { display: inline-block; background: linear-gradient(135deg, var(--primary-green), #3a8f51); color: white; padding: 12px 28px; border-radius: 25px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; align-self: flex-start; }
         .read-more-btn:hover { background: linear-gradient(135deg, #3a8f51, var(--primary-green)); box-shadow: 0 6px 15px rgba(45, 110, 63, 0.3); transform: translateX(4px); }
         
+        @media (max-width: 1024px) {
+            .blog-cards-grid { grid-template-columns: repeat(2, 1fr); gap: 25px; }
+        }
         @media (max-width: 768px) {
             .blog-cards-grid { grid-template-columns: 1fr; gap: 25px; }
             .blog-archive-header h1 { font-size: 32px; }
@@ -131,6 +134,23 @@
                     <a href="blog-post-2.html" class="read-more-btn">Read Full Article</a>
                 </div>
             </article>
+
+            <!-- Blog Card 3 -->
+            <article class="blog-card">
+                <img src="./images/tajweed-quran-academy-official-banner.jpg" alt="Complete Parent's Guide to Online Quran Classes for Kids UK & Europe 2026" title="Online Quran Classes for Kids UK – Parent's Guide 2026" class="blog-card-image">
+                <div class="blog-card-content">
+                    <span class="blog-badge">PARENT'S GUIDE</span>
+                    <h2>The Complete Parent's Guide to Online Quran Classes for Kids – UK &amp; Europe 2026</h2>
+                    <div class="blog-card-rating"><span class="stars">★★★★★</span> 4.9/5 (238+ Reviews)</div>
+                    <p class="blog-card-teaser">Everything UK &amp; European parents need to know — Tajweed, one-on-one tutors, class structure, 90-day learning roadmap, and how to choose the right teacher...</p>
+                    <div class="blog-card-meta">
+                        <span>📅 June 23, 2026</span>
+                        <span>⏱️ 14 min read</span>
+                        <span>✓ 850+ Families Helped</span>
+                    </div>
+                    <a href="blog-post-3.html" class="read-more-btn">Read Full Article</a>
+                </div>
+            </article>
         </section>
     </main>
 
@@ -148,6 +168,7 @@
                         <li><a href="online-quran-academy-blog.html">All Posts</a></li>
                         <li><a href="blog-post-1.html">Quran Education</a></li>
                         <li><a href="blog-post-2.html">Ramadan Guide</a></li>
+                        <li><a href="blog-post-3.html">Parent's Guide UK</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
