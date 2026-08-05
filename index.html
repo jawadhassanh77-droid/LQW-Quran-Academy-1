@@ -23,6 +23,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+
+    <style>
+    .btn-requesttrailclasses {
+        position: relative;
+        background-color: #0056b3;
+        color: #ffffff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        display: inline-block;
+        animation: bulbGlow 1.5s infinite alternate;
+    }
+
+    @keyframes bulbGlow {
+        0% {
+            box-shadow: 0 0 5px rgba(0, 86, 179, 0.4);
+        }
+        100% {
+            box-shadow: 0 0 20px rgba(0, 86, 179, 0.9), 0 0 30px rgba(0, 123, 255, 0.6);
+        }
+    }
+</style>
     
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
@@ -63,15 +87,14 @@
                     </div>
                 </div>
             </nav>
-            
-            <div class="header-actions">
-                <a href="https://wa.me/923279906467?text=I%20want%20to%20request%20a%20demo%20class" class="btn btn-requesttrailclasses" target="_blank">Request Trail Classes</a>
-                <button class="mobile-menu-toggle" id="mobile-menu-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
+           <div class="header-actions">
+    <a href="https://wa.me/923279906467?text=I%20want%20to%20request%20a%20demo%20class" class="btn btn-requesttrailclasses" target="_blank">Request Trail Classes</a>
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+     </div>
         </div>
     </header>
 
